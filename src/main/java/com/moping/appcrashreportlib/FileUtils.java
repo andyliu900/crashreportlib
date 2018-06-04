@@ -20,7 +20,7 @@ public class FileUtils {
      * 列出路径下文件列表
      *
      * @param path  文件路径
-     * @return
+     * @return  路径下的文件列表
      */
     public static Collection<File> listFiles(String path) {
         return listFiles(path, null, false);
@@ -31,7 +31,7 @@ public class FileUtils {
      *
      * @param path  文件路径
      * @param recursive  是否递归查询文件夹内的文件夹
-     * @return
+     * @return  路径下的文件列表
      */
     public static Collection<File> listFiles(String path, boolean recursive) {
         return listFiles(path, null, recursive);
@@ -47,7 +47,7 @@ public class FileUtils {
      * @param path  文件路径
      * @param extensions  文件格式后缀，只列出符合后缀的文件
      * @param recursive  是否递归查询文件夹内的文件夹
-     * @return
+     * @return  路径下的文件列表
      */
     public static Collection<File> listFiles(String path, String[] extensions, boolean recursive) {
         if (path == null || TextUtils.isEmpty(path)) {

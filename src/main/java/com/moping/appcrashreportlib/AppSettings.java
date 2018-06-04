@@ -9,7 +9,7 @@ public class AppSettings {
     /**
      * 获取崩溃文件保存路径
      *
-     * @return
+     * @return 返回崩溃日志保存路径
      */
     public static String getGlobalCrashPath() {
         return Environment.getExternalStorageDirectory().getAbsolutePath()

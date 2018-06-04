@@ -68,7 +68,7 @@ public class CrashFileManager {
     /**
      * 收集错误信息
      *
-     * @param context
+     * @param context  上下文
      */
     public void collectDeviceInfo(Context context) {
         infos.clear();
@@ -116,7 +116,7 @@ public class CrashFileManager {
     /**
      * 保存错误信息到文件
      *
-     * @param ex
+     * @param ex  错误exception
      */
     public void saveCrashInfo(Throwable ex) {
 
@@ -141,11 +141,19 @@ public class CrashFileManager {
 
         String result = writer.toString();
         sb.append(result);
+
+        // 收集线程信息
+        sb.append("\n");
+        sb.append(ThreadCollector.collect(Thread.currentThread()));
+
+        // 收集内存信息
+        sb.append("\n");
+        sb.append(DumpSysCollector.collectMemInfo());
+
         infos.put("crashInfo", result);
 
         // 保存错误信息至网络
         if (!TextUtils.isEmpty(AppSettings.REPORT_IP)) {
-
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -220,7 +228,7 @@ public class CrashFileManager {
     /**
      * 上传崩溃日志到后台
      *
-     * @param infos
+     * @param infos 封装好的设备信息
      */
     private void uploadCrashInfo(Map<String, String> infos) {
         if (infos == null) {
