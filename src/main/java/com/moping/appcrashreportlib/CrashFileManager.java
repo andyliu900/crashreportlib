@@ -139,18 +139,23 @@ public class CrashFileManager {
         }
         printWriter.close();
 
+        StringBuffer uploadCrashInfo = new StringBuffer();
+
         String result = writer.toString();
         sb.append(result);
+        uploadCrashInfo.append(result);
 
         // 收集线程信息
         sb.append("\n");
         sb.append(ThreadCollector.collect(Thread.currentThread()));
+        uploadCrashInfo.append("\n" + ThreadCollector.collect(Thread.currentThread()));
 
         // 收集内存信息
         sb.append("\n");
         sb.append(DumpSysCollector.collectMemInfo());
+        uploadCrashInfo.append("\n" + DumpSysCollector.collectMemInfo());
 
-        infos.put("crashInfo", result);
+        infos.put("crashInfo", uploadCrashInfo.toString());
 
         // 保存错误信息至网络
         if (!TextUtils.isEmpty(AppSettings.REPORT_IP)) {
