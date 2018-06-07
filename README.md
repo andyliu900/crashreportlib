@@ -1,10 +1,13 @@
 # crashreportlib
 Android App 应用崩溃日志收集上传组件
 
+# 修复问题
+1.0.1   修复特定情况下使用崩溃问题
+
 # 使用方法
 1、gradle配置
 
-	compile 'com.ideacode:crashreportlib:1.0.0'
+	compile 'com.ideacode:crashreportlib:1.0.1'
 
 2、全局配置
 
