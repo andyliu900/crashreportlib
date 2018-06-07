@@ -209,6 +209,7 @@ public class CrashFileManager {
     public void autoClear(final int autoClearDay) {
         if (autoClearDay < 0) {
             Log.e(TAG, "输入保存天数有误");
+            return;
         }
 
         DecimalFormat df = new DecimalFormat("0.00");

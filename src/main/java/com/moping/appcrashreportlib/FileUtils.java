@@ -64,8 +64,10 @@ public class FileUtils {
                 for (int i = 0; i < extensions.length; i++) {
                     FileFlitter fileFlitter = new FileFlitter(extensions[i]);
                     File[] files = file.listFiles(fileFlitter);
-                    for (int j = 0; j < files.length; j++) {
-                        arrayList.add(files[j]);
+                    if (files != null) {
+                        for (int j = 0; j < files.length; j++) {
+                            arrayList.add(files[j]);
+                        }
                     }
                 }
             } else {
